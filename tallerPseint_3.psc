@@ -70,12 +70,12 @@ FinFuncion
 Funcion ejercicio_3
 
 	Definir descuento, cantidad_articulos, valor_producto, i Como Entero;
-	Definir iva Como Real;
 	
 	Escribir "Digite la cantidad de productos: ";
 	Leer cantidad_articulos
 
-	iva = 1.19
+	// Probando las costantes
+	Costante IVA = 1.19
 	
 	Dimension precios[cantidad_articulos];
 	Dimension precios_iva[cantidad_articulos];
@@ -109,6 +109,69 @@ Funcion ejercicio_3
 		FinSi
 
 	FinPara
+
+FinFuncion
+
+Funcion ejercicio_4
+
+	Definir long_vector, i Como Entero;
+	Definir multiplo, producto Como Real;
+	
+	Escribir "Digite hasta que numero quiere multiplicar?";
+	Leer long_vector;
+
+	Escribir "Digite el numero que quiere multiplicar"
+	Leer multiplo;
+
+	Dimension productos[long_vector];
+
+	Para i <- 1 Hasta long_vector Hacer
+	
+		productos[i] = multiplo * i;
+
+	FinPara
+
+	Para Cada valor De productos Hacer
+		Escribir Sin Saltar valor " ";
+	FinPara
+
+FinFuncion
+
+Funcion ejercicio_5
+
+	Definir cantidad_notas, i Como Entero;
+	Definir nota, promedio Como Real;
+	promedio = 0
+
+	Escribir "Digite la cantidad de notas";
+	Leer cantidad_notas
+
+	Dimension notas[cantidad_notas];
+
+	Para i = 1 Hasta cantidad_notas Hacer
+		
+		Escribir "Digite la nota N-", i;
+		Leer nota;
+		
+		notas[i] = nota;
+		
+	FinPara
+
+	Para Cada valor De notas Hacer
+		
+		promedio = promedio + valor
+		
+	FinPara
+
+	Escribir "El promedio del estudiate con las notas "
+
+	Para Cada valor De notas Hacer
+		
+		Escribir Sin Saltar valor ", ";
+		
+	FinPara
+
+	Escribir "Su promedio es: ", promedio / cantidad_notas;
 
 FinFuncion
 
