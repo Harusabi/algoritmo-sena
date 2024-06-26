@@ -74,8 +74,7 @@ Funcion ejercicio_3
 	Escribir "Digite la cantidad de productos: ";
 	Leer cantidad_articulos
 
-	// Probando las costantes
-	Costante IVA = 1.19
+	iva = 1.19
 	
 	Dimension precios[cantidad_articulos];
 	Dimension precios_iva[cantidad_articulos];
@@ -175,8 +174,133 @@ Funcion ejercicio_5
 
 FinFuncion
 
+Funcion ejercicio_6
+
+	Definir cantidad_numeros, numero_mayor, numero_menor, n Como Entero;
+	
+	cantidad_numeros = 10;
+	numero_mayor = 0;
+	
+	Dimension vector_numeros[cantidad_numeros];
+	
+	Para i = 1 Hasta cantidad_numeros Hacer
+		
+		Escribir "Digite el numero", i;
+		Leer n;
+		
+		vector_numeros[i] = n;
+		
+	FinPara
+
+	Escribir "";
+
+	Para Cada valor De vector_numeros Hacer
+			
+		Si valor > numero_mayor Entonces
+			
+			numero_mayor = valor;
+			
+		FinSi
+
+	FinPara
+	
+	numero_menor = numero_mayor;
+
+	Para Cada valor De vector_numeros Hacer
+
+	Si valor < numero_menor Entonces
+
+		numero_menor = valor;
+	
+	FinSi
+
+	FinPara
+	
+	Escribir "El numero mayor es: ", numero_mayor, ". El numero menor es: ", numero_menor;
+	
+FinFuncion
+
+Funcion ejercicio_7
+
+	Definir n_numeros, num, i Como Entero;
+
+	Escribir "Digite el dato N";
+	Leer n_numeros;
+
+	Dimension numbers[n_numeros];
+	i = 1;
+
+	Para Cada elemento De numbers Hacer
+	
+		Escribir "Escriba el numero ", i;
+		Leer num;
+		i = i + 1
+
+		elemento = num
+
+	FinPara
+
+	Para Cada valor De numbers Hacer
+
+		Si valor > 0 Entonces
+
+			Escribir "Su numero ", valor, " Es positivo"
+		
+		FinSi 
+		Si valor = 0 Entonces
+
+			Escribir "Su numero ", valor, " Es cero"
+		
+		FinSi 
+		Si valor < 0 Entonces
+
+			Escribir "Su numero ", valor, " Es negativo"
+		
+		FinSi 
+		
+	FinPara
+
+FinFuncion
+
 Algoritmo main
-	
-	ejercicio_3;
-	
+
+	Definir opcion Como Entero;
+
+	Repetir
+		Escribir '¿Qué ejercicio quieres probar? Digite el número del ejercicio (1 a 7) o 8 para salir: ';
+		Leer opcion;
+
+		Mientras opcion < 1 | opcion > 8 Hacer
+			Escribir 'Opción Inválida, vuelva a digitar la opción:';
+			Leer opcion;
+		FinMientras
+
+		Segun opcion Hacer
+			1: 
+				ejercicio_1;
+				Limpiar Pantalla
+			2: 
+				ejercicio_2;
+				Limpiar Pantalla
+			3: 
+				ejercicio_3;
+				Limpiar Pantalla
+			4: 
+				ejercicio_4;
+				Limpiar Pantalla
+			5: 
+				ejercicio_5;
+				Limpiar Pantalla
+			6: 
+				ejercicio_6;
+				Limpiar Pantalla
+			7: 
+				ejercicio_7;
+				Limpiar Pantalla
+			8: 
+				Escribir 'Saliendo del programa...';
+		FinSegun
+
+	Hasta que opcion = 8
+
 FinAlgoritmo
