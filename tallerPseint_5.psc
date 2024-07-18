@@ -56,19 +56,35 @@ FinFuncion
 // Realiza un algoritmo el cual me permita calcular operaciones (con funciones) de figuras,
 // calcular áreas y perímetros, deberá ser manejado por medio de un menú.
 
-Funcion resultado = operacionCuadrado(l1)
+Funcion operacionCuadrado(l)
 
-    Si l1 > 0 Entonces
+Si l > 0 Entonces
 
-        Escribir "El area del cuadrado es: ", l1 ^ 2;
-        Escribir "El perimetro del cuadrado es: ", l1 * 4;
+    Escribir "El area del cuadrado es: ", l ^ 2;
+    Escribir "El perimetro del cuadrado es: ", l * 4;
+
+FinSi
+Mientras l < 0 Hacer
+    Escribir 'Numero invalido'
+    Leer l;
+FinMientras
+
+FinFuncion
+
+Funcion operacionCirculo(radio)
+
+    Si radio > 0 Entonces
+
+        Escribir "El area del circulo es: ", (radio ^ 2) * PI;
+        Escribir "El perimetro del circulo es: ", 2 * PI * radio;
 
     FinSi
-    Mientras l1 < 0 |  Hacer
-        Escribir 'Numero invalido'
-        Leer operacion;
-    FinMientras
+    Mientras radio < 0 Hacer
 
+        Escribir 'Numero invalido'
+        Leer radio;
+        
+    FinMientras
 
 FinFuncion
 
