@@ -1,143 +1,188 @@
 import java.util.Scanner;
+import java.lang.Thread;
 
 public class App {
-    static void ejercicio1() {
 
-        Scanner input = new Scanner(System.in);
+    // Codigo revisado y corregido
+    public static void main(String[] args) {
 
-        System.out.println("Digite su edad: ");
-        int edad = input.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        Integer opcion = 0;
 
-        System.out.println("Escriba true si es colombiano o false en caso contrario: ");
-        boolean nacionalidad = input.nextBoolean();
+        try {
 
-        input.nextLine();
-        System.out.println("Es Mujer (F) o Hombre (M)");
-        String sexo = input.nextLine().toLowerCase();
+            do {
 
-        System.out.println("Ha prestado anteriormente el servicio militar? true o false");
-        boolean definicionMilitar = !input.nextBoolean();
+                System.out.println("Escriba el numero del ejercicio que desea");
 
-        System.out.println("Tiene atecendes penales: true si tiene y false si no tiene ");
-        boolean atecendes = !input.nextBoolean();
+                if (scanner.hasNextInt()) {
+                    opcion = scanner.nextInt();
+                } else {
+                    System.out.println("Error en " + scanner);
+                }
+                switch (opcion) {
+                    case 1:
+                        System.out.println("Apto para prestar servicio? " + ejercicio1());
+                        Thread.sleep(3000);
+                        break;
+                    case 2:
+                        System.out.println("El resultado factorial es: " + ejercicio2());
+                        Thread.sleep(3000);
+                        break;
+                    case 3:
+                        System.out.println("El area de su figura es: " + ejercicio3());
+                        Thread.sleep(3000);
+                        break;
+                    case 4:
+                        System.out.println(ejercicio4());
+                        Thread.sleep(3000);
+                        break;
+                    case 5:
+                        System.out.println("El resultado de su operacion es: " + ejercicio5());
+                        Thread.sleep(3000);
+                        break;
+                    case 6:
+                        System.out.println("El numero es primo? " + ejercicio6());
+                        Thread.sleep(3000);
+                        break;
+                    case 0:
+                        System.out.println("Saliendo del programa...");
+                        break;
+                    default:
+                        System.out.println("Opción no válida. Por favor, elija un número entre 1 y 6 o 0 para salir.");
+                        break;
+                }
+            } while (opcion != 0);
 
-        if (nacionalidad && definicionMilitar && atecendes && sexo.equals("m") && edad >= 18 && edad <= 24) {
+            scanner.close();
 
-            System.out.println("Esta apto para prestar servicio militar");
-
-        } else
-            System.out.println("No esta apto para prestar servicio militar");
-
-        input.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }
 
-    static int ejercicio2() {
+    // Codigo revisado y corregido
+    public static Boolean ejercicio1() {
 
+        @SuppressWarnings("resource")
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Escriba el numero que deseé: ");
-        int numero = input.nextInt();
-        int resultado = numero;
+        System.out.print("Digite su edad: ");
+        Integer edad = input.nextInt();
 
-        for (int i = numero - 1; i <= 1; i--) {
+        System.out.print("Escriba true si es colombiano o false en caso contrario: ");
+        Boolean nacionalidad = input.nextBoolean();
+
+        input.nextLine();
+        System.out.print("Es Mujer (F) o Hombre (M): ");
+        String sexo = input.nextLine().toLowerCase();
+
+        while ((sexo.length() != 1) || !(sexo.equals("f")) && !(sexo.equals("m"))) {
+
+            System.out.print("Error, vuelva a escribir el sexo: ");
+            sexo = input.nextLine().toLowerCase();
+
+        }
+
+        System.out.print("Ha prestado anteriormente el servicio militar? true o false");
+        Boolean definicionMilitar = !input.nextBoolean();
+
+        System.out.print("Tiene atecendes penales: true si tiene y false si no tiene ");
+        Boolean atecendes = !input.nextBoolean();
+
+        Boolean prestacionServicio = ((nacionalidad) && (definicionMilitar) && (atecendes) && (sexo.equals("m"))
+                && (edad >= 18) && (edad <= 24)) ? true : false;
+
+        return prestacionServicio;
+    }
+
+    // Codigo revisado y corregido
+    static Integer ejercicio2() {
+
+        @SuppressWarnings("resource")
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Escriba el numero que deseé: ");
+        Integer numero = input.nextInt();
+        Integer resultado = numero;
+
+        for (Integer i = numero - 1; i >= 1; i--) {
 
             resultado *= i;
 
         }
 
-        input.close();
         return resultado;
     }
 
-    static int ejercicio3() {
+    // Codigoo revisado y corregido
+    static Integer ejercicio3() {
 
+        @SuppressWarnings("resource")
         Scanner input = new Scanner(System.in);
 
         System.out.println("Digite la base de su rectagunlo:");
-        int base = input.nextInt();
+        Integer base = input.nextInt();
 
         System.out.println("Digite la altura de su rectagunlo:");
-        int altura = input.nextInt();
+        Integer altura = input.nextInt();
 
-        int area = base * altura;
+        Integer area = base * altura;
 
-        input.close();
-
-        if (base == 0 && altura == 0) {
-            System.out.print("Datos invalidos");
-        }
         return area;
 
     }
 
+    // Codigo revisado y corregido
     static String ejercicio4() {
 
+        @SuppressWarnings("resource")
         Scanner input = new Scanner(System.in);
 
         System.out.println("Escriba el numero que desee");
-        int number = input.nextInt();
-        String texto = "";
+        Integer number = input.nextInt();
 
-        if (number % 2 == 0) {
-
-            if (number < 0)
-                texto = "Su numero es par y negativo";
-            if (number == 0)
-                texto = "Su numero es par y cero";
-            else
-                texto = "Su numero es par y positivo";
-
-        }
-
-        if (number % 2 != 0) {
-
-            if (number < 0)
-                texto = "Su numero es impar y negativo";
-            if (number == 0)
-                texto = "Su numero es impar y cero";
-            else
-                texto = "Su numero es impar y positivo";
-
-        }
-
-        input.close();
+        String texto = (number == 0) ? "El numero es cero"
+                : (number > 0) ? (number % 2 == 0) ? "El numero es positivo y par" : "El numero es positivo e impar"
+                        : (number % 2 == 0) ? "El numero es negativo y par" : "El numero es negativo e impar";
         return texto;
     }
 
-    static int ejercicio5() {
+    // Codigo revisado y corregido
+    static Integer ejercicio5() {
 
+        @SuppressWarnings("resource")
         Scanner input = new Scanner(System.in);
-        int resultado = 0;
+        Integer resultado = 0;
 
         System.out.println("Escriba la operacion que quiera");
-        int operacion = input.nextInt();
+        Integer operacion = input.nextInt();
         System.out.println("Escriba el numero A y B");
-        int a = input.nextInt();
-        int b = input.nextInt();
+        Integer a = input.nextInt();
+        Integer b = input.nextInt();
 
         switch (operacion) {
             case 1:
-
                 resultado = a + b;
-
                 break;
             case 2:
-
                 resultado = a - b;
-
                 break;
             case 3:
-
                 resultado = a * b;
-
                 break;
             case 4:
 
-                if (a != 0 && b != 0) {
-                    resultado = a / b;
-                } else
-                    System.out.println("Numeros invalidos");
+                while ((a == 0) && (b == 0)) {
+
+                    System.out.println("Datos Erroneos, vuelva a digitarlos");
+                    a = input.nextInt();
+                    b = input.nextInt();
+
+                }
+
+                resultado = a / b;
 
                 break;
 
@@ -146,27 +191,27 @@ public class App {
                 break;
         }
 
-        input.close();
         return resultado;
     }
 
-    static boolean ejercicio6() {
+    // Codigo revisado y corregido
+    static Boolean ejercicio6() {
 
+        @SuppressWarnings("resource")
         Scanner input = new Scanner(System.in);
-        boolean esPrimo = false;
+        Boolean esPrimo = true;
+        Integer x = 2;
 
-        System.out.println("Escriba el nummero que desee");
-        int numero = input.nextInt();
+        System.out.println("Escriba el numero que desee");
+        Integer numero = input.nextInt();
 
-        for (int x = 1; x < numero; x++) {
-            System.out.println("null");
+        while ((esPrimo) && (x < numero)) {
+            if (numero % x == 0) {
+                esPrimo = false;
+            }
+            x++;
         }
-
         return esPrimo;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(ejercicio5());
     }
 
 }
