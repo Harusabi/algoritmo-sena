@@ -107,7 +107,7 @@ public class taller1 {
         Integer numero = input.nextInt();
         Integer resultado = numero;
 
-        for (Integer i = numero - 1; i >= 1; i--) {
+        for (Integer i = numero - 1; i > 1; i--) {
 
             resultado *= i;
 

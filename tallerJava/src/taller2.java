@@ -1,5 +1,4 @@
 import java.text.MessageFormat;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class taller2 {
@@ -14,7 +13,8 @@ public class taller2 {
 
             do {
 
-                System.out.println("Numero del ejercicio     o 0 para finalizar programa");
+                System.out.println("Numero del ejercicio 0 para finalizar programa");
+                System.out.print("Opcion: ");
 
                 if (input.hasNextInt()) {
                     opcion = input.nextInt();
@@ -139,14 +139,14 @@ public class taller2 {
 
         System.out.print("Digite n veces para pedir numero: ");
         int n = input.nextInt();
-        String text = "Sus numeros pares son: \n";
+        String text = "Sus numeros pares son \n";
 
         for (int i = 1; i <= n; i++) {
 
             System.out.print(MessageFormat.format("Escriba el numero {0} deseado: ", i));
             int number = input.nextInt();
 
-            text = (number % 2 == 0) ? text.concat(MessageFormat.format("{0}, ", number)) : null;
+            text = (number % 2 == 0) ? text.concat(MessageFormat.format("{0} ", number)) : text.concat("");
 
         }
         return text;
@@ -220,8 +220,6 @@ public class taller2 {
      * estudiantes con N materias, use ciclo while?
      */
     static String ejercicio5() {
-
-        input.useLocale(Locale.US);
 
         System.out.print("Digite n estudiantes: ");
         int nEstudiantes = input.nextInt();
