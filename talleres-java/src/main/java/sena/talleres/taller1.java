@@ -1,3 +1,5 @@
+package sena.talleres;
+
 import java.util.Scanner;
 import java.lang.Thread;
 

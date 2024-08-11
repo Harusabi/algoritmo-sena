@@ -1,7 +1,9 @@
+package sena.talleres;
+
 import java.text.MessageFormat;
 import java.util.Scanner;
 
-public class taller2 {
+public class Taller2 {
 
     private static Scanner input = new Scanner(System.in);
 
