@@ -19,7 +19,59 @@ public class Taller3 {
     private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-        ejercicio6();
+        Integer opcion = 0;
+
+        try {
+
+            do {
+
+                System.out.println("Numero del ejercicio 0 para finalizar programa");
+                System.out.print("Opcion: ");
+
+                if (input.hasNextInt()) {
+                    opcion = input.nextInt();
+                } else {
+                    System.out.println("Error en el escaner");
+                }
+                switch (opcion) {
+                case 1:
+                    System.out.println(ejercicio1());
+                    Thread.sleep(3000);
+                    break;
+                case 2:
+                    System.out.println(ejercicio2());
+                    Thread.sleep(3000);
+                    break;
+                case 3:
+                    System.out.println(ejercicio3());
+                    Thread.sleep(3000);
+                    break;
+                case 4:
+                    System.out.println(ejercicio4());
+                    Thread.sleep(3000);
+                    break;
+                case 5:
+                    System.out.println(ejercicio5());
+                    Thread.sleep(3000);
+                    break;
+                case 6:
+                    System.out.println(ejercicio6());
+                    Thread.sleep(3000);
+                    break;
+                case 0:
+                    System.out.println("Saliendo del programa...");
+                    break;
+                default:
+                    System.out.println("Opción no válida. Por favor, elija un número entre 1 y 6 o 0 para salir.");
+                    break;
+                }
+            } while (opcion != 0);
+
+            input.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     //
