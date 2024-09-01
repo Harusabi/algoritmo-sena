@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.function.BiFunction;
 
 public class App {
 
@@ -144,7 +143,6 @@ public class App {
   // compre manzanas es esa frutería.
 
   static double ejercicio4() {
-    BiFunction<Double, Double, Double> incrementoFunction = (x, y) -> x + (x * y);
 
     System.out.print("Digite el precio del kilo de manzanas: ");
     double precioKilo = input.nextDouble();
@@ -169,7 +167,7 @@ public class App {
   // saber cuánto dinero tendrá finalmente en su cuenta.
 
   static String ejercicio5() {
-    final double TASA_INTERES = 0.1d; // 10% de interés
+    final double TASA_INTERES = 0.1d;
 
     System.out.print("Escriba el monto invertido inicialmente: ");
     double montoInicial = input.nextDouble();
@@ -255,7 +253,7 @@ public class App {
     int cantidadCamisas = input.nextInt();
 
     if (cantidadCamisas <= 0) {
-      return null; // O manejar este caso de otra manera
+      return null;
     }
 
     double precioTotalSinDescuento = precioCamisa * cantidadCamisas;
