@@ -244,15 +244,33 @@ public class App {
     // matriz.forEach(System.out::println);
     System.out.println("\nResultado");
 
-    ArrayList<Integer> listaNum = matriz.stream().flatMap(ArrayList::stream).collect(Collectors.toCollection(ArrayList::new));
+    ArrayList<Integer> listaNum =
+        matriz.stream().flatMap(ArrayList::stream).collect(Collectors.toCollection(ArrayList::new));
     listaNum.sort(null);
 
     HashMap<String, String> resultados = new LinkedHashMap<String, String>();
-        resultados.put("Numeros Ceros", listaNum.stream().filter(n -> n == 0).map(String::valueOf).collect(Collectors.joining(", ")));
-        resultados.put("Numeros Pares", listaNum.stream().filter(n -> n != 0 && n % 2 == 0).map(String::valueOf).collect(Collectors.joining(", ")));
-        resultados.put("Numeros Impares", listaNum.stream().filter(n -> n % 2 != 0).map(String::valueOf).collect(Collectors.joining(", ")));
+    resultados.put(
+        "Numeros Ceros",
+        listaNum.stream()
+            .filter(n -> n == 0)
+            .map(String::valueOf)
+            .collect(Collectors.joining(", ")));
 
-        System.out.println(listaNum);
+    resultados.put(
+        "Numeros Pares",
+        listaNum.stream()
+            .filter(n -> n != 0 && n % 2 == 0)
+            .map(String::valueOf)
+            .collect(Collectors.joining(", ")));
+
+    resultados.put(
+        "Numeros Impares",
+        listaNum.stream()
+            .filter(n -> n % 2 != 0)
+            .map(String::valueOf)
+            .collect(Collectors.joining(", ")));
+
+    System.out.println(listaNum);
     return resultados;
   }
 
@@ -283,10 +301,15 @@ public class App {
     //         .collect(Collectors.toCollection(ArrayList::new));
     // matriz.forEach(System.out::println);
 
-    ArrayList<Integer> listaNum = matriz.stream().flatMap(ArrayList::stream).collect(Collectors.toCollection(ArrayList::new));
+    ArrayList<Integer> listaNum =
+        matriz.stream().flatMap(ArrayList::stream).collect(Collectors.toCollection(ArrayList::new));
     listaNum.sort(null);
 
-        return String.format("Numeros impares: %1$s",listaNum.stream().filter(n -> n % 2 != 0).map(String::valueOf).collect(Collectors.joining(", ")));
-
+    return String.format(
+        "Numeros impares: %1$s",
+        listaNum.stream()
+            .filter(n -> n % 2 != 0)
+            .map(String::valueOf)
+            .collect(Collectors.joining(", ")));
   }
 }
