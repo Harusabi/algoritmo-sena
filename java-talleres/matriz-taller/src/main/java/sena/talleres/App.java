@@ -16,7 +16,87 @@ public class App {
   static ArrayList<ArrayList<Integer>> matriz = new ArrayList<>();
 
   public static void main(String[] args) {
-    System.out.println(ejercicio8(5, 6, 10));
+    int opcion;
+
+    do {
+      System.out.println("1. Ejercicio 1");
+      System.out.println("2. Ejercicio 2");
+      System.out.println("3. Ejercicio 3");
+      System.out.println("4. Ejercicio 4");
+      System.out.println("5. Ejercicio 5");
+      System.out.println("6. Ejercicio 6");
+      System.out.println("7. Ejercicio 7");
+      System.out.println("8. Ejercicio 8");
+      System.out.println("0. Salir");
+      System.out.print("Seleccione un ejercicio (0-8): ");
+      opcion = input.nextInt();
+
+      switch (opcion) {
+        case 1:
+          System.out.println(ejercicio1());
+          matriz.clear();
+          break;
+        case 2:
+          System.out.println(ejercicio2());
+          matriz.clear();
+          break;
+        case 3:
+          ejercicio4().forEach(System.out::println);
+          matriz.clear();
+          break;
+        case 4:
+          ejercicio4().forEach(System.out::println);
+          matriz.clear();
+          break;
+        case 5:
+          System.out.print("Ingrese el número de columnas: ");
+          int colum5 = input.nextInt();
+          System.out.print("Ingrese el número de filas: ");
+          int fila5 = input.nextInt();
+          System.out.print("Ingrese el límite de relleno: ");
+          int limite5 = input.nextInt();
+          System.out.println(ejercicio5(colum5, fila5, limite5));
+          matriz.clear();
+          break;
+        case 6:
+          System.out.print("Ingrese el número de columnas: ");
+          int colum6 = input.nextInt();
+          System.out.print("Ingrese el número de filas: ");
+          int fila6 = input.nextInt();
+          System.out.print("Ingrese el límite de relleno: ");
+          int limite6 = input.nextInt();
+          System.out.println(ejercicio6(colum6, fila6, limite6));
+          matriz.clear();
+          break;
+        case 7:
+          System.out.print("Ingrese el número de columnas: ");
+          int colum7 = input.nextInt();
+          System.out.print("Ingrese el número de filas: ");
+          int fila7 = input.nextInt();
+          System.out.print("Ingrese el límite de relleno: ");
+          int limite7 = input.nextInt();
+          ejercicio7(colum7, fila7, limite7).forEach((k, v) -> System.out.println(k + ": " + v));
+          matriz.clear();
+          break;
+        case 8:
+          System.out.print("Ingrese el número de columnas: ");
+          int colum8 = input.nextInt();
+          System.out.print("Ingrese el número de filas: ");
+          int fila8 = input.nextInt();
+          System.out.print("Ingrese el límite de relleno: ");
+          int limite8 = input.nextInt();
+          System.out.println(ejercicio8(colum8, fila8, limite8));
+          matriz.clear();
+          break;
+        case 0:
+          System.out.println("Saliendo del programa...");
+          matriz.clear();
+          break;
+        default:
+          System.out.println("Opción no válida. Intente de nuevo.");
+          matriz.clear();
+      }
+    } while (opcion != 0);
   }
 
   // 1. ¿Realiza un algoritmo el cual me permita calcular, la multiplicación de la columna 3 y la
@@ -31,7 +111,8 @@ public class App {
       }
     }
 
-    Integer multiplicacion = matriz.stream().mapToInt(num -> num.get(2)).reduce(1, (a, b) -> a * b);
+    Integer multiplicacion =
+        matriz.stream().mapToInt(num -> num.get(2)).filter(n -> n != 0).reduce(1, (a, b) -> a * b);
     OptionalDouble division =
         matriz.stream()
             .mapToDouble(num -> num.get(3))
@@ -174,10 +255,10 @@ public class App {
     int sumCol = matriz.stream().mapToInt(num -> num.get(1)).sum();
     double promedio = (double) (sumFila + sumCol) / matriz.size();
 
-    matriz.forEach(
-        row ->
-            System.out.println(
-                row.stream().map(String::valueOf).collect(Collectors.joining("\t"))));
+    // matriz.forEach(
+    //     row ->
+    //         System.out.println(
+    //             row.stream().map(String::valueOf).collect(Collectors.joining("\t"))));
 
     return String.format("\nPromedio de la matriz: %1$.3f", promedio);
   }
@@ -227,9 +308,22 @@ public class App {
             .mapToObj(
                 x ->
                     IntStream.range(0, colum)
-                        .mapToObj(y -> random.nextInt(0, limite_relleno))
+                        .mapToObj(
+                            y -> {
+                              System.out.print("Digite un numero: ");
+                              return input.nextInt();
+                            })
                         .collect(Collectors.toCollection(ArrayList::new)))
             .collect(Collectors.toCollection(ArrayList::new));
+
+    // matriz =
+    //     IntStream.range(0, fila)
+    //         .mapToObj(
+    //             x ->
+    //                 IntStream.range(0, colum)
+    //                     .mapToObj(y -> random.nextInt(0, limite_relleno))
+    //                     .collect(Collectors.toCollection(ArrayList::new)))
+    //         .collect(Collectors.toCollection(ArrayList::new));
 
     matriz.forEach(System.out::println);
     // System.out.println("\nMatriz Ordenada");
@@ -270,7 +364,7 @@ public class App {
             .map(String::valueOf)
             .collect(Collectors.joining(", ")));
 
-    System.out.println(listaNum);
+    // System.out.println(listaNum);
     return resultados;
   }
 
@@ -286,9 +380,22 @@ public class App {
             .mapToObj(
                 x ->
                     IntStream.range(0, colum)
-                        .mapToObj(y -> random.nextInt(0, limite_relleno))
+                        .mapToObj(
+                            y -> {
+                              System.out.print("Digite un numero: ");
+                              return input.nextInt();
+                            })
                         .collect(Collectors.toCollection(ArrayList::new)))
             .collect(Collectors.toCollection(ArrayList::new));
+
+    // matriz =
+    //     IntStream.range(0, fila)
+    //         .mapToObj(
+    //             x ->
+    //                 IntStream.range(0, colum)
+    //                     .mapToObj(y -> random.nextInt(0, limite_relleno))
+    //                     .collect(Collectors.toCollection(ArrayList::new)))
+    //         .collect(Collectors.toCollection(ArrayList::new));
 
     // System.out.println("\nMatriz Ordenada");
     // matriz =
